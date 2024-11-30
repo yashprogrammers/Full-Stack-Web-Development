@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Random Color Boxes</title>
+    <style>
+      body {
+        background-color: #222;
+        color: #fff;
+      }
+      #boxes {
+        display: grid;
+        grid-template-columns: auto auto auto auto auto;
+        gap: 20px;
+        width: fit-content;
+      }
+      .box {
+        border: 1px solid #fff;
+        height: 100px;
+        width: 100px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 25px;
+        font-weight: bold;
+
+        /* background-color: rgb(171, 106, 106); */
+      }
+    </style>
+  </head>
+  <body>
+    <div id="boxes">
+      <div class="box">Box</div>
+      <div class="box">Box</div>
+      <div class="box">Box</div>
+      <div class="box">Box</div>
+      <div class="box">Box</div>
+    </div>
+
+    <script>
+        let boxes = document.getElementById('boxes')
+
+      function getColor() {
+        let r = Math.floor(Math.random() * 255);
+        let g = Math.floor(Math.random() * 255);
+        let b = Math.floor(Math.random() * 255);
+
+        return `rgb(${r}, ${g}, ${b})`
+      }
+
+      for (let i = 0; i < 5; i++) {
+        boxes.children[i].style.backgroundColor = getColor()
+      }
+    </script>
+  </body>
+</html>

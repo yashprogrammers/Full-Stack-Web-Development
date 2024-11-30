@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dynamic Card</title>
+    <style>
+      body {
+        margin: 0%;
+        padding: 0%;
+        box-sizing: border-box;
+        background-color: lightblue;
+        font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS",
+          sans-serif;
+      }
+
+      #cCard {
+        width: 40px;
+        height: 40px;
+        background-color: #fff;
+        position: absolute;
+        right: 20px;
+        bottom: 20px;
+        font-size: 30px;
+      }
+      .cards {
+        display: flex;
+        flex-wrap: wrap;
+        width: 80vw;
+        margin: 50px auto;
+      }
+      .cards .profile {
+        width: fit-content;
+        justify-content: center;
+        border-radius: 20px;
+        text-align: center;
+        padding: 20px;
+        background-color: aliceblue;
+        margin: 10px;
+      }
+      .cards #img {
+        width: 150px;
+        height: 150px;
+        background-color: violet;
+        border-radius: 50%;
+      }
+      .cards #name {
+        font-size: 20px;
+        font-weight: bold;
+      }
+      .cards #social {
+        text-decoration: underline;
+      }
+    </style>
+  </head>
+  <body>
+    <button id="cCard" onclick="createCard()">+</button>
+    <div class="cards"></div>
+
+    <script>
+      let cards = document.querySelector(".cards");
+
+      function createCard() {
+        let name = prompt("Enter the Name");
+        let mobNo = prompt("Enter the Mobile Number");
+        let social = prompt("Enter Social Handle");
+
+        if (name == "" || mobNo == "" || social == "") {
+          createCard();
+        } else {
+          let info = `
+                <div id="img"></div>
+                <div id="name">${name}</div>
+                <div id="mob-no">${mobNo}</div>
+                <div id="social">${social}</div>`;
+
+          let profile = document.createElement("div");
+          profile.setAttribute("class", "profile");
+          profile.innerHTML = info;
+          cards.append(profile);
+          savedData();
+        }
+      }
+
+      // local Storaged
+      function savedData() {
+        localStorage.setItem("data", cards.innerHTML);
+      }
+
+      function showCard() {
+        // Check if there's any saved data in localStorage
+        const savedCard = localStorage.getItem("data");
+        if (savedCard) {
+          cards.innerHTML = savedCard;
+        }
+      }
+
+      showCard();
+        // localStorage.removeItem('data');
+    </script>
+  </body>
+</html>

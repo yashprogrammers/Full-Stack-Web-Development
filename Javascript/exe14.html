@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Hackers Terminal</title>
+    <style>
+      body {
+        background-color: black;
+        font-family: monospace;
+        color: greenyellow;
+        font-size: 22px;
+        margin: 0%;
+        padding: 0%;
+        box-sizing: border-box;
+      }
+
+      ul {
+        list-style: none;
+      }
+      ul li {
+        margin: 5px;
+      }
+    </style>
+  </head>
+  <body>
+    <ul class="ul"></ul>
+    <script>
+      let ul = document.querySelector(".ul");
+      let cmd = [
+        "Initialized Hacking",
+        "Password Files Detected",
+        "Files will be Sending",
+        "Sending to Servers",
+        "Cleaning up",
+      ];
+
+      function getdata(i) {
+        let rand = Math.floor(Math.random() * 6);
+        return new Promise((resolve, reject) => {
+          setTimeout(() => {
+            // console.log(cmd[i]);
+            let li = document.createElement("li");
+            li.innerHTML = cmd[i];
+            ul.append(li);
+            resolve(200);
+          }, rand * 1000);
+        });
+      }
+
+      async function output() {
+        for (let i = 0; i < cmd.length; i++) {
+          await getdata(i);
+        }
+      }
+
+      output();
+    </script>
+  </body>
+</html>
