@@ -1,11 +1,48 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Token Generation</title>
-</head>
-<body>
-    
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Authentication</title>
+    <style>
+      * {
+        margin: 0%;
+        padding: 0%;
+        box-sizing: border-box;
+        font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS",
+          sans-serif;
+      }
+      body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        background-color: lightsalmon;
+      }
+      .cont {
+        padding: 20px;
+        background-color: #fff;
+        text-align: center;
+      }
+      .cont #token {
+        font-size: 6rem;
+        font-weight: bold;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="cont">
+      <div id="token">0000</div>
+    </div>
+
+    <script>
+      let token = document.getElementById("token");
+
+      setInterval(() => {
+        let tokenNum = Math.floor(Math.random() * 9999);
+        token.innerHTML = tokenNum;
+      }, 10000);
+      
+    </script>
+  </body>
 </html>
