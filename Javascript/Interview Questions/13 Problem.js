@@ -11,3 +11,5 @@ for (let i = 0; i < product.length; i++) {
 }
 
 console.log("The Total Cost is:", totalCost)
+
+
